@@ -57,3 +57,13 @@ p {
   80% { background-color: #f472b6; }
   100% { background-color: #fdf2f8; }
 }
+
+h2 {
+  font-family: "OpenSans", sans-serif;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 900;
+  letter-spacing: 0.063rem;
+  line-height: 2rem;
+  color: #3A4046;
+}

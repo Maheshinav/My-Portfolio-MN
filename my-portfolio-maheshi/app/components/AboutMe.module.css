@@ -1,0 +1,46 @@
+.aboutMeSection {
+  width: 100%;
+  height: 100vh;
+  background-image: url('https://res.cloudinary.com/dchzjr4bz/image/upload/v1701159001/pawel-czerwinski-hNrd99q5peI-unsplash_aw6pkx.jpg');
+  background-size: cover;
+  background-position: 0% 50%;
+  position: relative;
+  overflow: hidden;
+  /* To ensure nothing spills outside the section */
+}
+
+.aboutMeSection::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  /* Creates the overlay effect */
+  pointer-events: none;
+  /* Ensures click events pass through to elements below */
+}
+
+.aboutMeContent {
+  position: absolute;
+  top: 50px;
+  /* Consistent margin from the top */
+  left: 50px;
+  /* Consistent margin from the left */
+  right: 50px;
+  /* Consistent margin from the right */
+  bottom: 50px;
+  /* Consistent margin from the bottom */
+  background: white;
+  /* Fully opaque white background */
+  padding: 20px;
+  overflow-y: auto;
+  /*
+  overflow-y: auto; /* Enables scrolling if the content is too long */
+  z-index: 1;
+}
+
+.aboutMeContext{
+padding-left: 3rem;
+}

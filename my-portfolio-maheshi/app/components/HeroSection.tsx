@@ -4,16 +4,15 @@ import { gsap } from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
 import styles from "./HeroSection.module.css";
 gsap.registerPlugin(TextPlugin);
-import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 gsap.registerPlugin(ScrollToPlugin);
 
 const Hero = () => {
 	const h1Ref = useRef<HTMLHeadingElement>(null);
 	const pRef = useRef(null);
-  const handleSeeMoreClick = () => {
-    // Scroll to the About Me section on button click
-    gsap.to(window, { duration: 1, scrollTo: '#about-me' });
-  };
+	const handleSeeMoreClick = () => {
+		gsap.to(window, { duration: 1, scrollTo: "#about-me" });
+	};
 
 	useEffect(() => {
 		const tl = gsap.timeline();
@@ -71,7 +70,7 @@ const Hero = () => {
 			>
 				<div className="max-w-md">
 					<h1 ref={h1Ref} style={{ whiteSpace: "nowrap" }}>
-						{`I'm Maheshi`.split("").map((char, index) => {
+						{`I'm Maheshi.`.split("").map((char, index) => {
 							const isSpace = char === " ";
 							return (
 								<span
@@ -104,7 +103,7 @@ const Hero = () => {
 			</div>
 			<button
 				onClick={handleSeeMoreClick}
-        className={`${styles.circleGapButton} btn btn-xs sm:btn-sm md:btn-md lg:btn-lg absolute z-10`}
+				className={`${styles.circleGapButton} btn btn-xs sm:btn-sm md:btn-md lg:btn-lg absolute z-10`}
 				style={{
 					bottom: "10%",
 					left: "50%",

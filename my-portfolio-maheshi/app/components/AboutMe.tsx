@@ -1,21 +1,34 @@
-import React from 'react';
+/* eslint-disable react/no-unescaped-entities */
+'use client';
+import React, { useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
+import styles from './AboutMe.module.css';
 
-const AboutMe = () => {
+const AboutMeSection = () => {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    gsap.to(sectionRef.current, {
+      backgroundPosition: '200% 50%',
+      duration: 10,
+      repeat: -1,
+      ease: 'linear',
+      yoyo: true
+    });
+  }, []);
+
   return (
-    <div id="about-me" className="hero min-h-screen bg-base-200">
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        
-        <div>
-          <h1 className="text-5xl font-bold">About Me</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.
-          </p>
-          {/* The button here can lead to a detailed section, a CV download, or any other call to action */}
-          <button className="btn btn-primary">Learn More</button>
-        </div>
+    <section id="about-me" ref={sectionRef} className={styles.aboutMeSection}>
+      <div className={styles.aboutMeContent}>
+      <div className={styles.aboutMeContext}>
+       <p>Maheshi Nawarathna</p>
+       <h2>About</h2>
       </div>
-    </div>
+       
+        {/* More content */}
+      </div>
+    </section>
   );
 };
 
-export default AboutMe;
+export default AboutMeSection;
