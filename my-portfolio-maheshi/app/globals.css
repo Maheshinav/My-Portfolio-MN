@@ -1,6 +1,12 @@
+@import url("https://use.typekit.net/jjc2zex.css");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -18,10 +24,36 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+h1 {
+  font-family: "source-sans-pro", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 4.374rem;
+  letter-spacing: 0.125rem;
+  line-height: 5rem;
+  color: #3A4046;
+}
+
+p {
+  font-family: "OpenSans", sans-serif;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: 0.063rem;
+  line-height: 2rem;
+  color: #5D656C;
+}
+
+@keyframes gradientBackground {
+  0% { background-color: #fdf2f8; }
+  20% { background-color: #fce7f3; }
+  40% { background-color: #fbcfe8; }
+  60% { background-color: #f9a8d4; }
+  80% { background-color: #f472b6; }
+  100% { background-color: #fdf2f8; }
 }
