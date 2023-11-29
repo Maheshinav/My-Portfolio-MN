@@ -1,0 +1,16 @@
+
+.overlayText {
+  margin-bottom: 20px;
+  color: #000; /* or any color you prefer */
+  font-size: 1.5em;
+  /* additional text styling */
+}
+
+.overlayButton {
+  border: none;
+  background-color: #fff; /* or any color you prefer */
+  color: #000; /* button text color */
+  padding: 10px 20px;
+  cursor: pointer;
+  /* additional button styling */
+}

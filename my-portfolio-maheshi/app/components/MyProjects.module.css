@@ -1,0 +1,13 @@
+.myProjectsHeadings{
+padding:3rem;
+}
+
+.myProjectsTabs{
+display:flex;
+justify-content: center;
+background-color: white;
+}
+
+.myProjectsTabButtons{
+background-color: none;
+}

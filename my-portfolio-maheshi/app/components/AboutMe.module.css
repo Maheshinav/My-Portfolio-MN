@@ -42,5 +42,23 @@
 }
 
 .aboutMeContext{
-padding-left: 3rem;
+padding: 3rem;
+}
+
+
+.circleGapButton:hover {
+  background-color: #f472b6 
+}
+
+.aboutMeImage{
+margin:3rem;
+}
+
+.aboutMeButton{
+background-color:#f472b6;
+}
+
+.aboutMeButtonContainer{
+display:flex;
+Justify-content: flex-end;
 }
