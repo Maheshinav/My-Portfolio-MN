@@ -12,6 +12,8 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -27,6 +29,8 @@ body {
   background: linear-gradient(to bottom,
       transparent,
       rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+      margin: 0;
+      padding: 0;
 }
 
 h1 {
@@ -60,10 +64,101 @@ p {
 
 h2 {
   font-family: "OpenSans", sans-serif;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-style: normal;
   font-weight: 900;
   letter-spacing: 0.063rem;
   line-height: 2rem;
   color: #3A4046;
+}
+
+@media (max-width: 767px) {
+.modal-box{
+max-width: none!important;
+}
+
+
+
+}
+
+.modal-box{
+padding:0;
+border-radius: 0 !important;
+width:100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 0;
+  margin: 0;
+ max-height: 10000000000vh;
+ --tw-scale-x: 1; 
+  --tw-scale-y: 1; 
+
+}
+
+
+
+
+
+@media (min-width: 768px) and (max-width: 1279px) {
+
+.modal-box{
+max-width: 90vw !important;
+
+}
+
+}
+@media (min-width: 1280px) {
+.modal-box{
+max-width: 50vw !important;
+}
+
+
+
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.navbar{
+
+min-height:2.4rem;
+}
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+.projectDescription{
+line-height: normal;
+}
+.btn{
+box-shadow: none;
+border-radius: 0%;
+}
+
+.button{
+
+border-radius: 0;
+
+}
+.btn-ghost{
+
+color: #e17285;
+
+}
+
+.text-xl{
+text-transform: uppercase;
+font-size: medium;
+}
+
+.mb-4{
+margin-bottom: 0;
+color:#d56378;
+font-size: 1rem;
+font-weight: bold;
 }

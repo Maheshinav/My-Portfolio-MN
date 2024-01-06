@@ -1,119 +1,77 @@
 "use client";
-import React, { useRef, useEffect } from "react";
-import { gsap } from "gsap";
-import { TextPlugin } from "gsap/TextPlugin";
-import styles from "./HeroSection.module.css";
+import React, { useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
+import TextPlugin from 'gsap/TextPlugin';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import styles from './HeroSection.module.css'; 
+
 gsap.registerPlugin(TextPlugin);
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 gsap.registerPlugin(ScrollToPlugin);
+interface HeroProps {
+    id: string;
+}
 
-const Hero = () => {
-	const h1Ref = useRef<HTMLHeadingElement>(null);
-	const pRef = useRef(null);
-	const handleSeeMoreClick = () => {
-		gsap.to(window, { duration: 1, scrollTo: "#about-me" });
-	};
+const Hero: React.FC<HeroProps> = ({ id }) => {
+    const h1Ref = useRef<HTMLHeadingElement>(null);
+    const pRef = useRef<HTMLParagraphElement>(null);
+    const buttonRef = useRef<HTMLButtonElement>(null);
+    const ballsContainerRef = useRef<HTMLDivElement>(null);
 
-	useEffect(() => {
-		const tl = gsap.timeline();
+    useEffect(() => {
+        // Animation for the heading
+        gsap.fromTo(
+            h1Ref.current,
+            { opacity: 0, y: -20 },
+            { opacity: 1, y: 0, duration: 0.8 }
+        );
 
-		if (h1Ref.current) {
-			tl.fromTo(
-				h1Ref.current.children,
-				{ opacity: 0, y: -20 },
-				{ opacity: 1, y: 0, stagger: 0.05, duration: 0.8 }
-			);
-		}
+        // Animation for the paragraph
+        gsap.fromTo(
+            pRef.current,
+            { opacity: 0 },
+            {
+                delay: 0.5,
+                duration: 2,
+                text: 'The awesome Programmer you have never met before..',
+                ease: 'none',
+                autoAlpha: 1,
+            }
+        );
+        
+    }, []);
 
-		if (pRef.current) {
-			tl.to(
-				pRef.current,
-				{
-					delay: 1,
-					duration: 2,
-					text: "The awesome Programmer you have never met before..",
-					ease: "none",
-					autoAlpha: 1,
-				},
-				">"
-			);
-		}
-	}, []);
+    const handleSeeMoreClick = () => {
+        const aboutMeSection = document.getElementById('about-me');
+        if (aboutMeSection) {
+            aboutMeSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
 
-	const backgroundImageStyle = {
-		backgroundImage:
-			"url(https://res.cloudinary.com/sudeshmaldivesbook/image/upload/v1701123159/UIPS.jpg)",
-		backgroundSize: "cover",
-		backgroundPosition: "center center",
-		backgroundRepeat: "no-repeat",
-	};
-
-	return (
-		<div
-			className={`${styles.heroAnimatedBackground} min-h-screen`}
-			style={{
-				backgroundImage:
-					"url(https://res.cloudinary.com/sudeshmaldivesbook/image/upload/v1701123159/UIPS.jpg)",
-				backgroundSize: "cover",
-				backgroundPosition: "center center",
-				backgroundRepeat: "no-repeat",
-			}}
-		>
-			<div
-				className="hero-content text-center"
-				style={{
-					position: "absolute",
-					top: "50%",
-					left: "52%",
-					transform: "translate(-50%, -50%)",
-				}}
-			>
-				<div className="max-w-md">
-					<h1 ref={h1Ref} style={{ whiteSpace: "nowrap" }}>
-						{`I'm Maheshi.`.split("").map((char, index) => {
-							const isSpace = char === " ";
-							return (
-								<span
-									key={index}
-									style={{
-										display: isSpace ? "inline" : "inline-block",
-										opacity: 0,
-										marginRight: isSpace ? "0.25em" : 0,
-									}}
-								>
-									{char}
-								</span>
-							);
-						})}
-					</h1>
-					<div
-						style={{
-							maxWidth: "300px",
-							margin: "0 auto",
-							textAlign: "center",
-							opacity: 0,
-						}}
-						ref={pRef}
-					>
-						<p ref={pRef} style={{ opacity: 0 }} className="hero-paragraph">
-							The awesome Programmer you have never met before..
-						</p>
-					</div>
-				</div>
-			</div>
-			<button
-				onClick={handleSeeMoreClick}
-				className={`${styles.circleGapButton} btn btn-xs sm:btn-sm md:btn-md lg:btn-lg absolute z-10`}
-				style={{
-					bottom: "10%",
-					left: "50%",
-					transform: "translateX(-50%)",
-				}}
-			>
-				See more
-			</button>
-		</div>
-	);
+    return (
+        <section id= {id} className={styles.heroImageContainer}>
+            <article className={styles.heroImage}>
+                <div className={styles.heroOverlay}></div>
+                <div className={styles.heroContentWrapper}>
+                    <div className={styles.heroContent}>
+                        <h1 ref={h1Ref} className={styles.heroImageText}>I'm <span className={styles.maheshiText}>Maheshi</span>
+                        </h1>
+                        <p ref={pRef} className={styles.heroParagraph}>
+                            {/* This text will be replaced by the GSAP animation */}
+                        </p>
+                    </div>
+                    <div className={styles.buttonContainer}>
+                        <button 
+                            ref={buttonRef} 
+                            className={styles.heroButton} 
+                            onClick={handleSeeMoreClick}
+                        >
+                        See More
+                        </button>
+                    </div>
+                </div>
+            </article>
+        </section>
+    );
 };
 
 export default Hero;

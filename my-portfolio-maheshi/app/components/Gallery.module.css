@@ -1,38 +1,120 @@
+/* General Styles for the Project Gallery */
 .projectsGallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust the min-width of the cards as needed */
-  grid-gap: 0; /* No gap between cards */
-  align-items: stretch; /* Stretches cards to fill the grid area vertically */
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	background-color: #e7e6e2;
+	padding-bottom: 3rem;
 }
 
+/* Styles for Individual Project Cards */
 .projectCard {
-  background-color: #fff; /* Background color of the cards */
-  overflow: hidden; /* Ensures no content spills out */
-  border: none; /* Removes any border */
-  box-shadow: none; /* Removes any shadow */
+	position: relative;
+	background-color: #fff;
+	overflow: hidden;
+	border: none;
+	box-shadow: none;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	flex: 0 1 100%;
 }
 
+@media (min-width: 768px) and (max-width: 1279px) {
+	.projectCard {
+		flex: 0 1 calc(50% - 20px);
+	}
+}
+
+@media (min-width: 1280px) {
+	.projectCard {
+		flex: 0 1 calc(33.333% - 20px);
+	}
+}
+
+/* Styles for Images within Project Cards */
 .projectImage {
-  width: 100%;
-  height: auto; /* Maintains aspect ratio */
-  display: block; /* Removes any extra space below the image */
+	width: 100%;
+	height: auto;
+	display: block;
+	margin: 0; 
 }
 
-/* Optional: If you want a hover effect on the cards */
-.projectCard:hover {
-  transform: scale(1.02); /* Slightly enlarges the card on hover */
-  transition: transform 0.3s; /* Smooth transition for the hover effect */
-}
-
+/* Overlay and Content Styles */
 .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ffe4e6;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* Add more styles as needed */
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #fef2f2;
+	opacity: 0;
+	/* Start with overlay hidden */
+	transition: opacity 0.5s ease;
+	overflow: hidden;
+	top: -100%;
+}
+
+.overlayContent {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	transform: translateY(-200%); /* Start further above */
+    transition: transform 0.5s ease, opacity 0.5s ease;
+
+}
+
+.projectCard:hover .overlay {
+	opacity: 1;
+	top: 0;
+	/* Show overlay on hover */
+}
+
+.projectCard:hover .overlayContent {
+	transform: translateY(0);
+	/* Slide content into place */
+}
+
+/* Project Name and Technologies Styles */
+.projectName {
+	font-size: 16px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.technologies {
+	text-align: center;
+	font-size: 14px;
+	color: #666;
+}
+
+/* Button Styles within Project Card */
+.projectButton {
+	position: absolute;
+	left: 50%;
+	bottom: 50px;
+	border: 2px solid #e31b6d;
+	font-size: 13pt;
+	padding: 7px 0;
+	width: 170px;
+	cursor: pointer;
+	 transform: translateX(-50%) translateY(200%);
+	transition: transform 0.5s ease;
+
+}
+
+.projectCard:hover .projectButton {
+	transform: translateX(-50%) translateY(0);
+	/* Slide button into place */
+}
+
+.aspectRatio, .projectsGallery, .projectCard {
+    /* Existing styles */
+    align-items: flex-start; /* Align items to the start of the flex container */
 }
