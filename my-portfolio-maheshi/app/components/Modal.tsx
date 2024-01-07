@@ -22,12 +22,6 @@ const Modal: React.FC<ModalProps> = ({
 	description,
 	images,
 }) => {
-	const openGitHub = () => {
-		window.open(githubUrl, "_blank");
-	};
-
-	if (!isOpen) return null;
-
 	const [currentImageIndex, setCurrentImageIndex] = useState(0);
 	const [containerStyle, setContainerStyle] = useState({});
 	const buttonRef = useRef<HTMLButtonElement>(null);
@@ -74,7 +68,11 @@ const Modal: React.FC<ModalProps> = ({
 			window.removeEventListener("resize", adjustImageContainer);
 		};
 	}, [currentImageIndex, images]);
+	if (!isOpen) return null;
 
+	const openGitHub = () => {
+		window.open(githubUrl, "_blank");
+	};
 	const nextImage = () => {
 		setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
 	};
@@ -95,6 +93,8 @@ const Modal: React.FC<ModalProps> = ({
 					<img
 						src={images[currentImageIndex]}
 						alt={`Slide ${currentImageIndex + 1}`}
+						// Adjust as necessary (e.g., "contain", "cover", etc.)width={16}   // Aspect ratio width
+						height={9} // Aspect ratio height
 						className={modalStyles.modalImage}
 					/>
 					<button

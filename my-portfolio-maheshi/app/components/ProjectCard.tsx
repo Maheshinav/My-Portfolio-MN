@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState} from "react";
 import Image from "next/image";
 import galleryStyles from "./Gallery.module.css";
 import projectCardStyles from "./ProjectCard.module.css";
@@ -29,12 +29,11 @@ githubUrl ="https://github.com/Maheshinav/band-site.git",
 	description,
 	technologies,
 	index,
-	isActive,
     images,
 	onCardClick,
 }) => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	const modalRef = useRef<HTMLDivElement>(null);
+
 
 	const openModal = (event: React.MouseEvent) => {
 		event.stopPropagation(); // Prevent triggering card's onClick
@@ -45,13 +44,6 @@ githubUrl ="https://github.com/Maheshinav/band-site.git",
 		setIsModalOpen(false);
 	};
 
-	const handleBackdropClick = (
-		event: React.MouseEvent<HTMLDivElement, MouseEvent>
-	) => {
-		if (!modalRef.current?.contains(event.target as Node)) {
-			closeModal();
-		}
-	};
 
 	return (
 	

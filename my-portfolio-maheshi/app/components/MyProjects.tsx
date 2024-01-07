@@ -9,7 +9,8 @@ interface MyProjectsProps {
     id: string;
 }
 
-const MyProjects: React.FC<MyProjectsProps> = ({ id }) => {
+// eslint-disable-next-line no-empty-pattern
+const MyProjects: React.FC<MyProjectsProps> = ({ }) => {
   const [activeTab, setActiveTab] = useState("ALL"); 
 
   return (
